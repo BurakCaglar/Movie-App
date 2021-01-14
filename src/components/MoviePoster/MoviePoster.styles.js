@@ -42,7 +42,7 @@ export const Text = styled.div`
     width: 4rem;
     height: 4rem;
     background: #fff;
-    color: #000;
+
     font-weight: 800;
     border-radius: 50%;
     margin: 0;

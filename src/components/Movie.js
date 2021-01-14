@@ -22,7 +22,7 @@ const Movie = () => {
   }
 
   if (error) {
-    <div>Ups! There is an error.</div>;
+    <p>Ups! There is an error.</p>;
   }
 
   return (

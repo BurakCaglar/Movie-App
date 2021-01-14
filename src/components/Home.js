@@ -7,9 +7,10 @@ import Grid from "./Grid";
 import MoviePoster from "./MoviePoster";
 
 import SearchBar from "./SearchBar";
+import Spinner from "./Spinner";
 
 const Home = () => {
-  const { state, setSearchTerm, searchTerm } = useHomeFetch();
+  const { state, setSearchTerm, searchTerm, loading } = useHomeFetch();
 
   return (
     <>
@@ -17,7 +18,7 @@ const Home = () => {
         <MainImage
           image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
           title={state.results[0].title}
-          text={state.results[0].genres}
+          text={state.results[0].overview}
         />
       ) : null}
       <SearchBar setSearchTerm={setSearchTerm} />
@@ -25,19 +26,19 @@ const Home = () => {
       <Grid header={searchTerm ? "Search Results:" : "Popular Movies"}>
         {state.results.map((movie) => (
           <MoviePoster
-            movie={movie}
             key={movie.id}
+            movieId={movie.id}
+            avarage={movie.vote_average}
             clickable={true}
             image={
               movie.poster_path
                 ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
                 : NoImage
             }
-            movieId={movie.id}
-            avarage={movie.vote_average}
           />
         ))}
       </Grid>
+      {loading && <Spinner />}
     </>
   );
 };
