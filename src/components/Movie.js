@@ -1,5 +1,6 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import { useParams, useNavigate } from "react-router-dom";
 import { IMAGE_BASE_URL, POSTER_SIZE } from "../config";
 import BreadCrumb from "./BreadCrumb";
 import Grid from "./Grid";
@@ -11,11 +12,13 @@ import MoviePoster from "./MoviePoster";
 import MovieDetail from "./MovieDetail";
 import Actor from "./Actor";
 import NoImage from "../images/no_image.png";
+import { BackButton } from "./Buttons/Buttons";
 
 const Movie = () => {
   const { movieId } = useParams();
-
   const { state: movie, loading, error, similars } = useMovieFetch(movieId);
+
+  const navigate = useNavigate();
 
   if (loading) {
     return <Spinner />;
@@ -28,7 +31,11 @@ const Movie = () => {
   return (
     <>
       <BreadCrumb movieTitle={movie.title} />
-      <MovieDetail movie={movie} />
+
+      <MovieWrapper>
+        <BackButton onClick={() => navigate("/")}>Go Back</BackButton>
+        <MovieDetail movie={movie} />
+      </MovieWrapper>
       <Grid header="Actors">
         {movie.actors.slice(0, 10).map((actor) => (
           <Actor
@@ -64,3 +71,7 @@ const Movie = () => {
 };
 
 export default Movie;
+
+const MovieWrapper = styled.div`
+  position: relative;
+`;

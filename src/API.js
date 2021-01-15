@@ -7,6 +7,10 @@ const apiSettings = {
       : `${POPULAR_BASE_URL}&page=${page}`;
     return await (await fetch(endpoint)).json();
   },
+  fetchTopRated: async (page) => {
+    const topRatedEndpoint = `${API_URL}movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`;
+    return await (await fetch(topRatedEndpoint)).json();
+  },
   fetchMovie: async (movieId) => {
     const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
     return await (await fetch(endpoint)).json();

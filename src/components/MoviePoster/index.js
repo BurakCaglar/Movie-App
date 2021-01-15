@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { Image, Wrapper, Text } from "./MoviePoster.styles";
+import { Image, Wrapper, Text, Description } from "./MoviePoster.styles";
 
 const rankColorList = {
   green: "green",
@@ -32,6 +32,9 @@ const MoviePoster = ({ image, movieId, clickable, avarage }) => {
               <div className="score" style={{ color: rankColor }}>
                 {avarage}
               </div>
+              <Description>
+                <h1>textt</h1>
+              </Description>
             </Text>
           </Wrapper>
         </Link>

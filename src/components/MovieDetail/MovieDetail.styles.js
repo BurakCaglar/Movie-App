@@ -4,7 +4,6 @@ import { IMAGE_BASE_URL, BACKDROP_SIZE } from "../../config";
 export const Wrapper = styled.div`
   background: ${({ backdrop }) =>
     backdrop ? `url(${IMAGE_BASE_URL}${BACKDROP_SIZE}${backdrop});` : "#000"};
-
   background-size: cover;
   background-position: center;
 
@@ -30,7 +29,7 @@ export const Content = styled.div`
   display: flex;
   max-width: var(--maxWidth);
   margin: 0 auto;
-
+  background: rgba(0, 0, 0, 0.7);
   border-radius: 2rem;
 
   @media screen and (max-width: 768px) {
@@ -39,7 +38,7 @@ export const Content = styled.div`
   }
 
   img {
-    width: 40rem;
+    width: 70% !important;
     height: 60rem;
 
     :hover {
@@ -50,10 +49,10 @@ export const Content = styled.div`
 
 export const Text = styled.div`
   width: 100%;
-  padding: 2rem 4rem;
+  padding: 2rem;
+  margin-right: 20rem;
   color: var(--white);
   overflow: hidden;
-  margin-left: 2rem;
 
   > p {
     font-family: SFTextLight;

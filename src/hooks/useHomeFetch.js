@@ -11,6 +11,8 @@ const initialState = {
 export const useHomeFetch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [state, setState] = useState(initialState);
+  const [topRated, setTopRated] = useState(initialState);
+  const [moviesPopular, setMoviesPopular] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -39,5 +41,71 @@ export const useHomeFetch = () => {
     fetchMovies(1, searchTerm);
   }, [searchTerm]);
 
-  return { state, loading, error, searchTerm, setSearchTerm };
+  const fetchTopRated = async (page) => {
+    try {
+      setError(false);
+      setLoading(true);
+
+      const topRated = await API.fetchTopRated(page);
+
+      setTopRated((prev) => ({
+        ...topRated,
+        results:
+          page > 1
+            ? [...prev.results, ...topRated.results]
+            : [...topRated.results],
+      }));
+      console.log(topRated);
+    } catch (error) {
+      setError(true);
+    }
+
+    setLoading(false);
+  };
+
+  // initial results and search results
+  useEffect(() => {
+    setTopRated(initialState);
+    fetchTopRated(1);
+    fetchTopRated(2);
+    fetchTopRated(3);
+  }, []);
+
+  const fetchMoviesPage = async (page) => {
+    try {
+      setError(false);
+      setLoading(true);
+
+      const moviesPopular = await API.fetchMovies(page);
+
+      setMoviesPopular((prev) => ({
+        ...moviesPopular,
+        results:
+          page > 1
+            ? [...prev.results, ...moviesPopular.results]
+            : [...moviesPopular.results],
+      }));
+      console.log(moviesPopular);
+    } catch (error) {
+      setError(true);
+    }
+
+    setLoading(false);
+  };
+
+  // initial results and search results
+  useEffect(() => {
+    setMoviesPopular(initialState);
+    fetchMoviesPage(0);
+  }, []);
+
+  return {
+    state,
+    topRated,
+    loading,
+    error,
+    searchTerm,
+    setSearchTerm,
+    moviesPopular,
+  };
 };

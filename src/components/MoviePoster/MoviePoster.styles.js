@@ -69,3 +69,5 @@ export const Text = styled.div`
     max-width: 100%;
   }
 `;
+
+export const Description = styled.div``;
