@@ -13,6 +13,7 @@ export const useHomeFetch = () => {
   const [state, setState] = useState(initialState);
   const [topRated, setTopRated] = useState(initialState);
   const [moviesPopular, setMoviesPopular] = useState(initialState);
+  const [genres, setGenres] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -41,6 +42,21 @@ export const useHomeFetch = () => {
     fetchMovies(1, searchTerm);
   }, [searchTerm]);
 
+  const fetchGenres = async () => {
+    try {
+      setError(false);
+      setLoading(true);
+
+      const genres = await API.fetchGenres();
+
+      setGenres({ ...genres });
+    } catch (error) {
+      setError(true);
+    }
+
+    setLoading(false);
+  };
+
   const fetchTopRated = async (page) => {
     try {
       setError(false);
@@ -55,7 +71,6 @@ export const useHomeFetch = () => {
             ? [...prev.results, ...topRated.results]
             : [...topRated.results],
       }));
-      console.log(topRated);
     } catch (error) {
       setError(true);
     }
@@ -69,6 +84,7 @@ export const useHomeFetch = () => {
     fetchTopRated(1);
     fetchTopRated(2);
     fetchTopRated(3);
+    fetchGenres();
   }, []);
 
   const fetchMoviesPage = async (page) => {
@@ -85,7 +101,6 @@ export const useHomeFetch = () => {
             ? [...prev.results, ...moviesPopular.results]
             : [...moviesPopular.results],
       }));
-      console.log(moviesPopular);
     } catch (error) {
       setError(true);
     }
@@ -107,5 +122,6 @@ export const useHomeFetch = () => {
     searchTerm,
     setSearchTerm,
     moviesPopular,
+    genres,
   };
 };

@@ -5,7 +5,6 @@ import NoImage from "../../images/no_image.png";
 import { Wrapper, ContentWrapper, Content, Text } from "./MovieDetail.styles";
 
 const MovieDetail = ({ movie }) => {
-  console.log(movie);
   return (
     <Wrapper backdrop={movie.backdrop_path}>
       <ContentWrapper>
@@ -22,8 +21,7 @@ const MovieDetail = ({ movie }) => {
           <Text>
             <h1>{movie.title}</h1>
             <p>{movie.overview}</p>
-
-            <p>{movie.release_date}</p>
+            <p>{movie.release_date.slice(0, 4)}</p>
             <div className="rating-directors">
               <div></div>
               <div className="director">
@@ -32,6 +30,7 @@ const MovieDetail = ({ movie }) => {
                   <p key={director.credit_id}>{director.name}</p>
                 ))}
               </div>
+              <p>{movie.genres.map((genre) => genre.name)}</p>
             </div>
           </Text>
         </Content>

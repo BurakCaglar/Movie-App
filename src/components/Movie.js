@@ -17,7 +17,6 @@ import { BackButton } from "./Buttons/Buttons";
 const Movie = () => {
   const { movieId } = useParams();
   const { state: movie, loading, error, similars } = useMovieFetch(movieId);
-
   const navigate = useNavigate();
 
   if (loading) {
@@ -55,6 +54,7 @@ const Movie = () => {
         {similars.results.map((movie) => (
           <MoviePoster
             key={movie.id}
+            movie={movie}
             clickable
             image={
               movie.poster_path

@@ -1,24 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import {
+  CircularProgressbarWithChildren,
+  buildStyles,
+} from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
-import { Image, Wrapper, Text, Description } from "./MoviePoster.styles";
+import {
+  Image,
+  Wrapper,
+  WrapperContent,
+  DetailsButton,
+  Content,
+  TmdbPoints,
+  Circular,
+  ReleaseDate,
+  Genres,
+} from "./MoviePoster.styles";
 
 const rankColorList = {
-  green: "green",
-  red: "red",
-  brown: "brown",
+  greaterThan85: "#1A8245",
+  greaterThan7: "#48BB70",
+  greaterThan6: "#F0C516",
+  greaterThan5: "#F59E1D",
+  greaterThan4: "#E94C3D",
+  lessThan4: "#BF1E2E",
 };
 
-const MoviePoster = ({ image, movieId, clickable, avarage }) => {
+const MoviePoster = ({ image, movieId, clickable, avarage, movie }) => {
   const [rankColor, setRankColor] = useState("");
 
   useEffect(() => {
-    if (avarage >= 7) {
-      setRankColor(rankColorList.green);
+    if (avarage >= 8.5) {
+      setRankColor(rankColorList.greaterThan85);
+    } else if (avarage >= 7) {
+      setRankColor(rankColorList.greaterThan7);
     } else if (avarage >= 6) {
-      setRankColor(rankColorList.brown);
+      setRankColor(rankColorList.greaterThan6);
+    } else if (avarage >= 5) {
+      setRankColor(rankColorList.greaterThan5);
+    } else if (avarage >= 4) {
+      setRankColor(rankColorList.greaterThan4);
     } else {
-      setRankColor(rankColorList.red);
+      setRankColor(rankColorList.lessThan4);
     }
   }, []);
 
@@ -27,15 +51,30 @@ const MoviePoster = ({ image, movieId, clickable, avarage }) => {
       {clickable ? (
         <Link to={`/${movieId}`}>
           <Wrapper>
-            <Image src={image} clickable={clickable} alt="movie-image" />
-            <Text>
-              <div className="score" style={{ color: rankColor }}>
-                {avarage}
-              </div>
-              <Description>
-                <h1>textt</h1>
-              </Description>
-            </Text>
+            <WrapperContent>
+              <Image src={image} clickable={clickable} alt="movie-image" />
+              <Content>
+                <ReleaseDate>{movie.release_date.slice(0, 4)}</ReleaseDate>
+                <Circular>
+                  <CircularProgressbarWithChildren
+                    value={avarage * 10}
+                    text={`${avarage}`}
+                    styles={buildStyles({
+                      strokeLinecap: "butt",
+                      textSize: "1.6rem",
+                      pathColor: `${rankColor}`,
+                      textColor: `${rankColor}`,
+                      trailColor: "#d6d6d6",
+                    })}
+                  >
+                    <TmdbPoints>tmdb points</TmdbPoints>
+                  </CircularProgressbarWithChildren>
+                </Circular>
+
+                <Genres>{}</Genres>
+                <DetailsButton>Details</DetailsButton>
+              </Content>
+            </WrapperContent>
           </Wrapper>
         </Link>
       ) : (

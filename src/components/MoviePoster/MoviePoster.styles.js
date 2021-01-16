@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -26,48 +27,72 @@ export const Image = styled.img`
   }
 `;
 
-export const Text = styled.div`
-  z-index: 100;
-  top: 0.6rem;
-  left: 0.6rem;
+export const Content = styled.div`
   position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+`;
 
-  color: var(--white);
-  font-size: 2rem;
-
-  .score {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 4rem;
-    height: 4rem;
-    background: #fff;
-
-    font-weight: 800;
-    border-radius: 50%;
-    margin: 0;
-  }
-
-  h1 {
-    font-size: 4rem;
-    font-family: "SFProDisplayBold";
-
-    @media screen and (max-width: 720px) {
-      font-size: var(--fontBig);
-    }
-  }
-
-  p {
-    font-size: var(--fontMed);
-
-    @media screen and (max-width: 720px) {
-      font-size: var(--fontSmall);
-    }
-  }
-
-  @media screen and (max-width: 720px) {
-    max-width: 100%;
+export const WrapperContent = styled.div`
+  width: 100%;
+  max-width: 720px;
+  position: relative;
+  &:hover ${Content} {
+    background: rgba(0, 0, 0, 0.7);
   }
 `;
 
-export const Description = styled.div``;
+export const Circular = styled.div`
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const ReleaseDate = styled.p`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 2rem;
+`;
+
+export const TmdbPoints = styled.p`
+  font-size: 1.5rem;
+  margin-top: 6rem;
+`;
+
+export const Genres = styled.p`
+  position: absolute;
+  left: 50%;
+  bottom: 30%;
+  transform: translate(-50%, 30%);
+  font-size: 2rem;
+`;
+
+export const DetailsButton = styled.div`
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translate(-50%, 10%);
+
+  color: white;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  border: 2px solid grey;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.3rem;
+  &:hover {
+    border: 2px solid white;
+    color: white;
+  }
+`;

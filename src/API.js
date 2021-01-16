@@ -39,6 +39,10 @@ const apiSettings = {
     const videosEndpoint = `${API_URL}movie/${movieId}/videos?api_key=${API_KEY}`;
     return await (await fetch(videosEndpoint)).json();
   },
+  fetchGenres: async () => {
+    const genresEndpoint = `${API_URL}genre/movie/list?api_key=${API_KEY}`;
+    return await (await fetch(genresEndpoint)).json();
+  },
 };
 
 export default apiSettings;

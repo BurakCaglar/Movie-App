@@ -20,6 +20,7 @@ const Home = () => {
     searchTerm,
     loading,
     moviesPopular,
+    genres,
   } = useHomeFetch();
   var settings = {
     dots: false,
@@ -63,7 +64,6 @@ const Home = () => {
       },
     ],
   };
-
   return (
     <>
       {!searchTerm && state.results[0] ? (
@@ -105,6 +105,7 @@ const Home = () => {
                   key={movie.id}
                   movieId={movie.id}
                   avarage={movie.vote_average}
+                  releaseDate={movie.release_date}
                   clickable={true}
                   image={
                     movie.poster_path
