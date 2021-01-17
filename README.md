@@ -6,6 +6,7 @@
 - All of content regarding on movies fetched from TMDB.(API page - Searching, popular, similar, top rated movies,actors and more...)
 - Styled Components
 - Progress bar (hover on movie card)
+- Colors based on movie ranking.
 - React Router (Links and navigate to back page)
 - UI Desing (developing)
 - Breadcrumb
