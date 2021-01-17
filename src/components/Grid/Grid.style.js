@@ -18,6 +18,6 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
   grid-gap: 2rem;
 `;
