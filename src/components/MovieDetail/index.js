@@ -21,16 +21,18 @@ const MovieDetail = ({ movie }) => {
           <Text>
             <h1>{movie.title}</h1>
             <p>{movie.overview}</p>
-            <p>{movie.release_date.slice(0, 4)}</p>
+            <p>
+              {movie.release_date.slice(0, 4)} |
+              {movie.genres.map((genre) => " " + genre.name + ", ")}
+            </p>
+
             <div className="rating-directors">
-              <div></div>
               <div className="director">
                 <h3>DIRECTOR{movie.directors.length > 1 ? "S" : ""}</h3>
                 {movie.directors.map((director) => (
                   <p key={director.credit_id}>{director.name}</p>
                 ))}
               </div>
-              <p>{movie.genres.map((genre) => genre.name)}</p>
             </div>
           </Text>
         </Content>
