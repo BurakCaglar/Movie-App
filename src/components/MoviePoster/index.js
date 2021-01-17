@@ -27,7 +27,15 @@ const rankColorList = {
   lessThan4: "#BF1E2E",
 };
 
-const MoviePoster = ({ image, movieId, clickable, avarage, movie }) => {
+const MoviePoster = ({
+  image,
+  movieId,
+  clickable,
+  avarage,
+  movie,
+  genres,
+  test,
+}) => {
   const [rankColor, setRankColor] = useState("");
 
   useEffect(() => {
@@ -49,34 +57,34 @@ const MoviePoster = ({ image, movieId, clickable, avarage, movie }) => {
   return (
     <>
       {clickable ? (
-        <Link to={`/${movieId}`}>
-          <Wrapper>
-            <WrapperContent>
-              <Image src={image} clickable={clickable} alt="movie-image" />
-              <Content>
-                <ReleaseDate>{movie.release_date.slice(0, 4)}</ReleaseDate>
-                <Circular>
-                  <CircularProgressbarWithChildren
-                    value={avarage * 10}
-                    text={`${avarage}`}
-                    styles={buildStyles({
-                      strokeLinecap: "butt",
-                      textSize: "1.6rem",
-                      pathColor: `${rankColor}`,
-                      textColor: `${rankColor}`,
-                      trailColor: "#d6d6d6",
-                    })}
-                  >
-                    <TmdbPoints>tmdb points</TmdbPoints>
-                  </CircularProgressbarWithChildren>
-                </Circular>
+        <Wrapper>
+          <WrapperContent>
+            <Image src={image} clickable={clickable} alt="movie-image" />
+            <Content>
+              <ReleaseDate>{movie.release_date.slice(0, 4)}</ReleaseDate>
+              <Circular>
+                <CircularProgressbarWithChildren
+                  value={avarage * 10}
+                  text={`${avarage}`}
+                  styles={buildStyles({
+                    strokeLinecap: "butt",
+                    textSize: "1.6rem",
+                    pathColor: `${rankColor}`,
+                    textColor: `${rankColor}`,
+                    trailColor: "#d6d6d6",
+                  })}
+                >
+                  <TmdbPoints>tmdb points</TmdbPoints>
+                </CircularProgressbarWithChildren>
+              </Circular>
 
-                <Genres>{}</Genres>
+              <Genres>{}</Genres>
+              <Link to={`/${movieId}`}>
                 <DetailsButton>Details</DetailsButton>
-              </Content>
-            </WrapperContent>
-          </Wrapper>
-        </Link>
+              </Link>
+            </Content>
+          </WrapperContent>
+        </Wrapper>
       ) : (
         <Wrapper>
           <Image src={image} alt="movie-image" />

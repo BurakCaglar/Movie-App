@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -34,15 +33,8 @@ export const Content = styled.div`
   left: 0;
   bottom: 0;
   margin: auto;
-`;
-
-export const WrapperContent = styled.div`
-  width: 100%;
-  max-width: 720px;
-  position: relative;
-  &:hover ${Content} {
-    background: rgba(0, 0, 0, 0.7);
-  }
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 `;
 
 export const Circular = styled.div`
@@ -64,7 +56,7 @@ export const ReleaseDate = styled.p`
 
 export const TmdbPoints = styled.p`
   font-size: 1.5rem;
-  margin-top: 6rem;
+  margin-top: 5rem;
 `;
 
 export const Genres = styled.p`
@@ -94,5 +86,15 @@ export const DetailsButton = styled.div`
   &:hover {
     border: 2px solid white;
     color: white;
+  }
+`;
+
+export const WrapperContent = styled.div`
+  width: 100%;
+  max-width: 720px;
+  position: relative;
+  &:hover ${Content} {
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 1;
   }
 `;
