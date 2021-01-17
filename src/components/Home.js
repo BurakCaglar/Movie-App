@@ -11,6 +11,7 @@ import Spinner from "./Spinner";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import data from "../data/data";
 
 const Home = () => {
   const {
@@ -22,12 +23,19 @@ const Home = () => {
     moviesPopular,
     genres,
   } = useHomeFetch();
+
   var settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 6,
-    slidesToScroll: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    swipeToSlide: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+
+    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1440,
@@ -64,6 +72,7 @@ const Home = () => {
       },
     ],
   };
+
   return (
     <>
       {!searchTerm && state.results[0] ? (
@@ -106,6 +115,7 @@ const Home = () => {
                   movieId={movie.id}
                   avarage={movie.vote_average}
                   releaseDate={movie.release_date}
+                  test={movie.genre_ids}
                   clickable={true}
                   image={
                     movie.poster_path
