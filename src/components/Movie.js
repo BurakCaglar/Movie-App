@@ -12,11 +12,12 @@ import MoviePoster from "./MoviePoster";
 import MovieDetail from "./MovieDetail";
 import Actor from "./Actor";
 import NoImage from "../images/no_image.png";
-import { BackButton } from "./Buttons/Buttons";
 
 const Movie = () => {
   const { movieId } = useParams();
-  const { state: movie, loading, error, similars } = useMovieFetch(movieId);
+  const { state: movie, loading, error, similars, reviews } = useMovieFetch(
+    movieId
+  );
   const navigate = useNavigate();
 
   if (loading) {
@@ -36,7 +37,7 @@ const Movie = () => {
         <MovieDetail movie={movie} />
       </MovieWrapper>
       <Grid header="Actors">
-        {movie.actors.slice(0, 10).map((actor) => (
+        {movie.actors.slice(0, 6).map((actor) => (
           <Actor
             key={actor.credit_id}
             name={actor.name}
@@ -49,7 +50,6 @@ const Movie = () => {
           />
         ))}
       </Grid>
-
       <Grid header="Similars">
         {similars.results.map((movie) => (
           <MoviePoster
@@ -74,4 +74,26 @@ export default Movie;
 
 const MovieWrapper = styled.div`
   position: relative;
+`;
+const BackButton = styled.div`
+  position: absolute;
+  right: 20%;
+  bottom: 10%;
+  transform: translate(20%, 10%);
+  color: white;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  border: 2px solid grey;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.3rem;
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid white;
+    color: white;
+  }
 `;
