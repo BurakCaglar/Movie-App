@@ -15,6 +15,7 @@
 
 # Will be added:
 - Styled components Navbar (Hamburger Menu)
+- Actors page
 - Dark mode / light mode (Context API)
 - Search movies with multiple filtering based on genres, points.(Redux)
 - Login system.
