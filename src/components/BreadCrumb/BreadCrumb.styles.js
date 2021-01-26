@@ -17,7 +17,7 @@ export const Content = styled.div`
   padding: 0 2rem;
   span {
     font-size: var(--fontMed);
-    color: var(--white);
+    color: ${(props) => props.theme.title};
     padding-right: 1rem;
 
     @media screen and (max-width: 768px) {

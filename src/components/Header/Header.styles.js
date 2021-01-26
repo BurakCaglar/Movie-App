@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { Sun, Moon } from "styled-icons/feather";
 
 export const Wrapper = styled.div`
-  background: rgba(24, 33, 49, 100);
+  background-color: ${(props) => props.theme.nav};
   padding: 0 2rem;
 `;
 
@@ -36,4 +37,21 @@ export const HamburgerMenu = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const Title = styled.h1`
+  color: black;
+`;
+
+const icon = css`
+  color: white;
+  cursor: pointer;
+`;
+
+export const StyledSun = styled(Sun)`
+  ${icon}
+`;
+
+export const StyledMoon = styled(Moon)`
+  ${icon}
 `;

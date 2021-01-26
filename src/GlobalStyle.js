@@ -63,22 +63,23 @@ html {
 body {
     margin: 0;
     padding: 0;
-    background-color: rgba(2, 9, 22, 1);
+    background-color: ${(props) => props.theme.background};
 
     h1 {
         font-size: 2rem;
         font-weight: 600;
-        color: var(--white);
+        color: #fff;
     }
 
     h3 {
         font-size: 1.1.rem;
         font-weight: 600;
+        color: #fff;
     }
 
     p {
         font-size: 1rem;
-        color: var(--white);
+        color: #fff;
     }
 }
 `;

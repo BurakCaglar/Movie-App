@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   padding: 0 2rem;
 
   h1 {
-    color: var(--white);
+    color: ${(props) => props.theme.title};
     font-family: SFProDisplayMedium;
     font-size: 2.5rem;
 

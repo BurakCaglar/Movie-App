@@ -4,6 +4,7 @@ import API from "../API";
 export const useMovieFetch = (movieId) => {
   const [state, setState] = useState({});
   const [similars, setSimilar] = useState({});
+  const [reviews, setReviews] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -17,6 +18,7 @@ export const useMovieFetch = (movieId) => {
         const credits = await API.fetchCredits(movieId);
         const similars = await API.fetchSimilars(movieId);
         const releaseDates = await API.fetchReleaseDates(movieId);
+        const reviews = await API.fetchReviews(movieId);
 
         // directors only
         const directors = credits.crew.filter(
@@ -30,6 +32,7 @@ export const useMovieFetch = (movieId) => {
           releaseDates,
         });
         setSimilar({ ...similars });
+        setReviews({ ...reviews });
         setLoading(false);
       } catch (error) {
         setError(true);
@@ -38,6 +41,5 @@ export const useMovieFetch = (movieId) => {
 
     fetchMovie();
   }, [movieId]);
-
-  return { state, similars, loading, error };
+  return { state, similars, reviews, loading, error };
 };

@@ -95,6 +95,7 @@ export const WrapperContent = styled.div`
   position: relative;
   &:hover ${Content} {
     background: rgba(0, 0, 0, 0.7);
+    border-radius: 1rem;
     opacity: 1;
   }
 `;

@@ -27,21 +27,19 @@ const Home = () => {
   var settings = {
     dots: false,
     infinite: true,
-    speed: 500,
     slidesToShow: 6,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     autoplay: true,
-    swipeToSlide: true,
     speed: 2000,
     autoplaySpeed: 2000,
-
     pauseOnHover: true,
+    swipeToSlide: true,
     responsive: [
       {
         breakpoint: 1440,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToScroll: 1,
           infinite: true,
           dots: false,
         },
@@ -50,7 +48,7 @@ const Home = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           infinite: true,
           dots: false,
         },
@@ -59,7 +57,7 @@ const Home = () => {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           initialSlide: 2,
         },
       },
@@ -84,7 +82,7 @@ const Home = () => {
       ) : null}
       <SearchBar setSearchTerm={setSearchTerm} />
       {searchTerm ? (
-        <Grid header={"Search Results:"}>
+        <Grid header={`Search results for ${searchTerm} :`}>
           {state.results.map((movie) => (
             <MoviePoster
               movie={movie}
@@ -163,7 +161,7 @@ const Wrapper = styled.div`
   margin: 0 0 2rem 0;
 
   h1 {
-    color: var(--white);
+    color: ${(props) => props.theme.title};
     font-family: SFProDisplayMedium;
     font-size: 2.5rem;
     margin-left: 4rem;
@@ -190,7 +188,7 @@ const StyledSlider = styled(Slider)`
     right: 25rem !important;
     :before {
       content: "<";
-      color: white;
+      color: ${(props) => props.theme.title};
       font-size: 30px;
     }
   }
@@ -201,7 +199,7 @@ const StyledSlider = styled(Slider)`
     top: -5rem;
     :before {
       content: ">";
-      color: white;
+      color: ${(props) => props.theme.title};
       font-size: 30px;
     }
   }
