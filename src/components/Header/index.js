@@ -18,21 +18,22 @@ import SearchBar from "../SearchBar";
 export const Header = () => {
   const { setSearchTerm } = useHomeFetch();
   const { theme, switchTheme } = useContext(ThemeContext);
+  
   return (
     <Wrapper>
       <Content>
         <Link to="/">
           <LogoImg src={Logo} alt="logo" />
         </Link>
-        <SearchBar setSearchTerm={setSearchTerm} />
-        <div className="side">
+        
+        {/* <div className="side">
           <img src={BellIcon} alt="bellIcon" />
           <img src={ArrowIcon} alt="arrowIcon" />
-        </div>
-        {theme === "dark" ? (
-          <StyledSun size={32} onClick={() => switchTheme("light")} />
-        ) : (
+        </div> */}
+        {theme === "light" ? (
           <StyledMoon size={32} onClick={() => switchTheme("dark")} />
+        ) : (
+          <StyledSun size={32} onClick={() => switchTheme("light")} />
         )}
       </Content>
     </Wrapper>

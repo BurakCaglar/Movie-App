@@ -30,8 +30,8 @@ const Home = () => {
     slidesToShow: 6,
     slidesToScroll: 2,
     autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 2000,
+    speed: 250,
+    autoplaySpeed: 5000,
     pauseOnHover: true,
     swipeToSlide: true,
     responsive: [
@@ -41,7 +41,6 @@ const Home = () => {
           slidesToShow: 4,
           slidesToScroll: 1,
           infinite: true,
-          dots: false,
         },
       },
       {
@@ -50,11 +49,10 @@ const Home = () => {
           slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
-          dots: false,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 800,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -64,8 +62,11 @@ const Home = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
+          autoplay: false,
+          speed: 250,
+          autoplaySpeed: 0,
         },
       },
     ],
@@ -178,29 +179,40 @@ const StyledSlider = styled(Slider)`
   position: relative;
 
   .slick-slide {
-    padding: 2rem 3rem 2rem 1rem;
-    margin-left: -1rem;
+    padding: 2rem 1rem 2rem 1rem;
+    /* transform: translateX(-3rem); */
   }
   .slick-prev {
     position: absolute;
-    top: -5rem;
+    top: -3.9rem;
     left: auto;
-    right: 25rem !important;
+    right: 15rem !important;
     :before {
       content: "<";
       color: ${(props) => props.theme.title};
       font-size: 30px;
+
+      @media screen and (max-width: 768px) {
+        display: none;
+    }
     }
   }
 
   .slick-next {
     position: absolute;
-    right: 20rem;
-    top: -5rem;
+    right: 10rem;
+    top: -3.9rem;
+    left: auto;
     :before {
       content: ">";
       color: ${(props) => props.theme.title};
       font-size: 30px;
+
+      @media screen and (max-width: 768px) {
+        display: none;
+    }
     }
   }
+
+ 
 `;

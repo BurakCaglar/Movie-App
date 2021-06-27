@@ -19,10 +19,11 @@ export const Content = styled.div`
   max-width: var(--maxWidth);
   width: 100%;
   height: 5.5rem;
-  background: rgba(255, 255, 255, 0.05);
+  background-color: ${(props) => props.theme.searchbar};
   margin: 0 auto;
   border-radius: 4rem;
   color: var(--white);
+
 
   img {
     position: absolute;

@@ -8,12 +8,14 @@ const themes = {
     title: "#fff",
     text: "#fff",
     nav: "rgba(24, 33, 49, 100)",
+    searchbar: "rgba(255, 255, 255, 0.05)"
   },
   light: {
-    background: "#f3f9fb",
+    background: "#EDEEF7",
     title: "#2c365d",
     text: "#000",
     nav: "#2c365d",
+    searchbar: "rgba(53, 31, 57, 0.5)"
   },
 };
 

@@ -37,7 +37,9 @@ const MoviePoster = ({
   test,
 }) => {
   const [rankColor, setRankColor] = useState("");
-
+/* const divided = movie.release_date.split("/~/");
+console.log(movie)
+var name = divided[0]; */
   useEffect(() => {
     if (avarage >= 8.5) {
       setRankColor(rankColorList.greaterThan85);
@@ -61,7 +63,7 @@ const MoviePoster = ({
           <WrapperContent>
             <Image src={image} clickable={clickable} alt="movie-image" />
             <Content>
-              <ReleaseDate>{movie.release_date.slice(0, 4)}</ReleaseDate>
+              <ReleaseDate>{movie.release_date && movie.release_date.slice(0,4)}</ReleaseDate>
               <Circular>
                 <CircularProgressbarWithChildren
                   value={avarage * 10}
